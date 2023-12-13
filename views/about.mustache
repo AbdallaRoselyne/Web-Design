@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+<nav class="bg-white shadow-lg">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-between items-center">
+      <div>
+        <a href="#" class="flex items-center py-4 px-2">
+          <span class="font-semibold text-gray-500 text-lg">MentorMeU</span>
+        </a>
+      </div>
+ 
+      <div class="md:flex hidden items-center space-x-3">
+        <a href="/auth/login" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-indigo-500 hover:text-white transition duration-300">Log In</a>
+        <a href="/auth/signup" class="py-2 px-2 font-medium text-white bg-indigo-500 rounded hover:bg-indigo-400 transition duration-300">Sign Up</a>
+      </div>
+
+
+      <div class="md:hidden flex items-center">
+        <button class="outline-none mobile-menu-button">
+          <svg class="w-6 h-6 text-gray-500 hover:text-indigo-500" 
+            fill="none" 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor">
+            <path d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<div class="md:hidden hidden mobile-menu">
+  <ul class="">
+    <li><a href="/auth/login" class="block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300">Login</a></li>
+    <li><a href="/auth/signup" class="block text-sm px-2 py-4 hover:bg-indigo-500 transition duration-300">Sign Up</a></li>
+  </ul>
+</div>
+
+</nav>
+
+<div class="mt-10 sm:mt-20">
+    <div class="max-w-2xl mx-auto p-8 bg-white rounded-lg shadow-md">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">About Us</h1>
+        <p class="text-lg text-gray-600 leading-relaxed mb-6">Welcome to our Coaching Platform, a place where students can connect with mentors and coaches to prepare for their career development.</p>
+        <p class="text-lg text-gray-600 leading-relaxed mb-4">Our platform offers a range of services including:</p>
+        <ul class="list-disc list-inside mb-6 space-y-2">
+            <li class="text-gray-600">Career Advice</li>
+            <li class="text-gray-600">Resume Review</li>
+            <li class="text-gray-600">Mock Interviews</li>
+        </ul>
+        <p class="text-lg text-gray-600 leading-relaxed text-center">Get started today to shape your future!</p>
+    </div>
+</div>
+
+    
+<script>
+  const btn = document.querySelector("button.mobile-menu-button");
+  const menu = document.querySelector(".mobile-menu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+</body>
+</html>

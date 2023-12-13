@@ -1,0 +1,5 @@
+{
+    "watch": ["*.mustache", "views/", "public/"],
+    "ext": "js,json,mustache"
+  }
+  

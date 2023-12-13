@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .sidebar-link:hover {
+            background-color: #eff6ff;
+            padding-left: 1rem;
+            border-radius: 0.375rem;
+        }
+
+        .sticky-footer-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .content-grow {
+            flex-grow: 1;
+        }
+
+        #menu-toggle:checked+#menu {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="sticky-footer-container p-3 md:pl-6">
+
+
+
+        <header class="bg-white shadow-md p-4 flex justify-between items-center md:hidden">
+            <a href="dashboard" class="text-2xl font-semibold text-blue-700 cursor-pointer">
+                MentorMeU
+            </a>
+
+            <label for="menu-toggle" class="cursor-pointer">
+                <i class="fas fa-bars"></i>
+            </label>
+            <input class="hidden" type="checkbox" id="menu-toggle">
+        </header>
+
+        <div class="flex flex-1 overflow-hidden">
+
+
+            <div class="bg-white rounded-lg shadow-md p-4 w-64 md:w-1/6 mb-5 md:mb-0 mr-4 hidden md:block">
+
+                <a href="dashboard" class="text-2xl font-semibold text-blue-700 mb-6 cursor-pointer">
+                    MentorMeU
+                </a>
+
+                <ul class="fa-ul">
+                    <li class="mb-2">
+                        <a href="/admin/dashboard"
+                            class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-tachometer-alt mr-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/admin/opportunities"
+                            class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-briefcase mr-2"></i> Opportunities
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/admin/students"
+                            class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-chart-line mr-2"></i> Students
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/admin/mentors"
+                            class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-user-friends mr-2"></i> Mentors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auth/logout" class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-sign-out-alt mr-2"></i> Logout
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div id="menu" class="bg-white rounded-lg shadow-md p-4 absolute w-full md:hidden hidden">
+                <ul class="fa-ul">
+                    <li class="mb-2">
+                        <a href="/admin/dashboard"
+                            class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-tachometer-alt mr-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/admin/opportunities"
+                            class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-briefcase mr-2"></i> Opportunities
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/admin/students"
+                            class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-chart-line mr-2"></i> Students
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/admin/mentors"
+                            class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-inbox mr-2"></i> Mentors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auth/logout" class="text-blue-600 hover:text-blue-800 sidebar-link flex items-center">
+                            <i class="fa-li fas fa-cog mr-2"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+           <div class="flex-1 mt-6 lg:mt-0 overflow-auto">
+<div class="hidden sm:block bg-blue-100 p-4 mb-4 rounded-lg shadow-md mt-4 sm:mt-8">
+    <h2 class="text-xl font-semibold">Welcome {{userFirstName}}</h2>
+</div>
+
+                <div class="container mx-auto px-4 sm:px-0 max-w-3xl mt-10">
+                    <div class="bg-white p-4 sm:p-8 border border-gray-200 rounded-lg shadow-lg">
+                        <h1 class="text-2xl font-semibold mb-4 sm:mb-6">Add New Student</h1>
+
+                        {{#messages.error}}
+                        <div class="bg-red-200 p-2 rounded-lg mb-4 text-red-800">
+                            {{messages.error}}
+                        </div>
+                        {{/messages.error}}
+
+                        {{#messages.success}}
+                        <div class="bg-green-200 p-2 rounded-lg mb-4 text-green-800">
+                            {{messages.success}}
+                        </div>
+                        {{/messages.success}}
+
+                        <form action="/admin/student/add" method="post" class="space-y-4">
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="sm:col-span-1">
+                                    <label for="username" class="block text-gray-700">Username:</label>
+                                    <input type="text" id="username" name="username" required
+                                        class="w-full p-2 sm:p-2 border border-gray-300 rounded">
+                                </div>
+
+                                <div class="sm:col-span-1">
+                                    <label for="password" class="block text-gray-700">Password:</label>
+                                    <input type="password" id="password" name="password" required
+                                        class="w-full p-2 sm:p-2 border border-gray-300 rounded">
+                                </div>
+
+                                <div class="sm:col-span-1">
+                                    <label for="firstName" class="block text-gray-700">First Name:</label>
+                                    <input type="text" id="firstName" name="firstName" required
+                                        class="w-full p-2 sm:p-2 border border-gray-300 rounded">
+                                </div>
+
+                                <div class="sm:col-span-1">
+                                    <label for="lastName" class="block text-gray-700">Last Name:</label>
+                                    <input type="text" id="lastName" name="lastName" required
+                                        class="w-full p-2 sm:p-2 border border-gray-300 rounded">
+                                </div>
+
+                                <div class="sm:col-span-1">
+                                    <label for="email" class="block text-gray-700">Email:</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full p-2 sm:p-2 border border-gray-300 rounded">
+                                </div>
+
+                                <div class="sm:col-span-1">
+                                    <label for="phoneNumber" class="block text-gray-700">Phone Number:</label>
+                                    <input type="tel" id="phoneNumber" name="phoneNumber" required
+                                        class="w-full p-2 sm:p-2 border border-gray-300 rounded">
+                                </div>
+                            </div>
+
+                           <div class="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+    <button type="submit"
+        class="w-full sm:w-auto px-3 sm:px-6 py-2 sm:py-3 border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white text-xs sm:text-sm leading-6 font-medium rounded-md focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out">
+        Add Student
+    </button>
+    <a href="/admin/students"
+        class="w-full sm:w-auto text-center sm:text-left text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out text-xs sm:text-sm">
+        Cancel
+    </a>
+</div>
+
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        document.getElementById('menu-toggle').addEventListener('change', function () {
+            var menu = document.getElementById('menu');
+            if (this.checked) {
+                menu.style.display = 'block';
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
