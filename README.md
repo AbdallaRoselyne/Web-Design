@@ -34,9 +34,6 @@ Requirements
 • npm (Node package manager)
 • MongoDB
 Installation
-1. Clone the repository to your local machine.
-https://github.com/Robaa2168/Coaching_Platform.git
-cd career-coaching-app
 2. Run npm install to install the required dependencies.
 3. Create a .env file with the following environment variables:
 index.js Documentation
